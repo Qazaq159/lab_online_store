@@ -1,26 +1,31 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 
 import {Category, Product} from '../objects';
 
 @Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+    selector: 'app-product-list',
+    templateUrl: './product-list.component.html',
+    styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit{
-  @Input() chosenCategory !: Category;
-  products!: Product[];
+export class ProductListComponent implements OnInit, OnChanges {
+    @Input() chosenCategory !: Category;
+    products!: Product[];
 
-  ngOnInit() {
-    this.chosenCategory = {
-      name: "d",
-      productItems: []
+    ngOnInit() {
+        this.chosenCategory = {
+            name: " ",
+            productItems: []
+        }
+        this.products = this.chosenCategory.productItems;
     }
-    if(this.chosenCategory.name !== ''){
-      this.products = this.chosenCategory.productItems;
-    }
-  }
 
+    ngOnChanges(changes: SimpleChanges) {
+
+        if(this.chosenCategory === undefined){
+            return
+        }
+        this.products = this.chosenCategory.productItems;
+    }
 }
 
 
