@@ -1,7 +1,8 @@
 <app-top-bar></app-top-bar>
 
+<app-category (ChosenCategory)="ChooseCategory($event)" ></app-category>
 <div class="container">
-  <router-outlet></router-outlet>
+  <app-product-list [chosenCategory]="chosenCategory"></app-product-list>
 </div>
 
 <!-- 

@@ -1,19 +1,10 @@
-<h2>Products</h2>
-
+<div>
+  <p>Products count: {{products.length}}</p>
+  <p>Products category: {{chosenCategory.name}}</p>
+</div>
 <div *ngFor="let product of products">
-  <h3>
-    <a title="{{ product.name }} details">
-      {{ product.name }}
-    </a>
-  </h3>
-
-  <img src="{{ product.imageUrl }}" style="width: 80px;">
-
-  <p *ngIf="product.description">Description: {{ product.description }}</p>
-
-  <button type="button" (click)="share()">Share</button>
-
-  <app-product-alerts [product]="product" (notify)='onNotify()'></app-product-alerts>
+<!--    <h4>{{product.name}}</h4>-->
+  <app-product-item [product]="product"></app-product-item>
 </div>
 
 
@@ -22,7 +13,7 @@
 <a href="vk.com/share.php?url=https://valid.url&amp;title=text">Vkontakte</a>
 <a href="tg://msg_url?url=https://valid.url&amp;text=text">Telegram</a>
 <a href="whatsapp://send?text=text%20https://valid.url">Whatsapp</a -->
-<!-- 
+<!--
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license

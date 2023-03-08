@@ -1,23 +1,26 @@
-import { Component } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
-import { products } from '../products';
+import {Category, Product} from '../objects';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent {
-  products = products;
+export class ProductListComponent implements OnInit{
+  @Input() chosenCategory !: Category;
+  products!: Product[];
 
-  share() {
-    window.alert('The product has been shared!');
-    
+  ngOnInit() {
+    this.chosenCategory = {
+      name: "d",
+      productItems: []
+    }
+    if(this.chosenCategory.name !== ''){
+      this.products = this.chosenCategory.productItems;
+    }
   }
 
-  onNotify() {
-    window.alert("You'll be get notify!");
-  }
 }
 
 
